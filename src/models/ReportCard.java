@@ -7,6 +7,7 @@ public class ReportCard {
     private List<Score> grades;
 
     public ReportCard(List<Score> grades) {
+        // If...Else para evitar que exista uma lista nula
         if (grades != null) {
             this.grades = new ArrayList<>(grades);
         } else {
