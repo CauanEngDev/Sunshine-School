@@ -7,9 +7,9 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.Image;
+import utils.RoundedButton;
 
 public class WelcomeScreen extends JFrame {
-    private JLabel logoLabel;
     private JButton startButton;
 
     public WelcomeScreen() {
@@ -45,7 +45,7 @@ public class WelcomeScreen extends JFrame {
         // Texto da Logo com fonte personalizada
         JLabel titleLabel = new JLabel("Sunshine School");
         titleLabel.setForeground(Color.decode("#B85A00"));
-        titleLabel.setFont(new Font("Magic School Two", Font.PLAIN, 72));
+        titleLabel.setFont(new Font("Magic School Two", Font.PLAIN, 90));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         logoPanel.add(logoLabel);
@@ -61,13 +61,7 @@ public class WelcomeScreen extends JFrame {
         // --- Botão Iniciar ---
         JPanel buttonPanel = new JPanel();
         buttonPanel.setOpaque(false);
-        startButton = new JButton("Iniciar");
-        startButton.setFont(new Font("Magic School One", Font.BOLD, 24));
-        startButton.setBackground(Color.decode("#87CEFA"));
-        startButton.setForeground(Color.white);
-        startButton.setFocusPainted(false);
-        startButton.setBorderPainted(false);
-        startButton.setPreferredSize(new Dimension(150, 60));
+        startButton = new RoundedButton("Iniciar", 40);
         buttonPanel.add(startButton);
 
         gbc.gridy = 1;
@@ -78,9 +72,8 @@ public class WelcomeScreen extends JFrame {
 
         // Torna a janela visível
         setVisible(true);
-        }
+    }
 
-    // Método para adicionar o Listener do botão (chamado pelo controller)
     public void addStartButtonListener(ActionListener listener) {
         startButton.addActionListener(listener);
     }

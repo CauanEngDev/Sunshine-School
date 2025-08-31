@@ -2,15 +2,14 @@ package controllers;
 
 import views.WelcomeScreen;
 import views.LoadingPanel;
-import views.MainApplicationFrame;
+import views.ChoiceScreen;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
 
 public class MainController {
-    private WelcomeScreen welcomeScreen;
+    private final WelcomeScreen welcomeScreen;
 
     public MainController(WelcomeScreen welcomeScreen) {
         this.welcomeScreen = welcomeScreen;
@@ -22,21 +21,29 @@ public class MainController {
         LoadingPanel loadingPanel = new LoadingPanel();
 
         welcomeScreen.getContentPane().removeAll();
-        welcomeScreen.getContentPane().add(loadingPanel);
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        gbc.fill = GridBagConstraints.BOTH;
+
+        welcomeScreen.getContentPane().add(loadingPanel, gbc);
 
         welcomeScreen.revalidate();
         welcomeScreen.repaint();
 
-        Timer timer = new Timer(2500, e -> switchToMainApplication());
+        Timer timer = new Timer(2500, e -> switchToChoiceScreen());
 
         timer.setRepeats(false);
         timer.start();
     }
 
-    private void switchToMainApplication() {
+    private void switchToChoiceScreen() {
         welcomeScreen.dispose();
 
-        MainApplicationFrame mainFrame = new MainApplicationFrame();
-        mainFrame.setVisible(true);
+        ChoiceController choiceScreen = new ChoiceController();
+        choiceScreen.setVisible(true);
     }
 }
