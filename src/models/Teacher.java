@@ -23,8 +23,6 @@ public class Teacher extends Person{
         }
     }
 
-    // --- MÉTODOS DE MODIFICAÇÃO (SETTERS) ---
-
     public void addDependent(Student dependent) {
         if (dependent != null) {
             this.dependents.add(dependent);
@@ -34,8 +32,6 @@ public class Teacher extends Person{
     public void setPhone(String newPhone) {
         this.phone = newPhone;
     }
-
-    // --- MÉTODOS DE ACESSO (GETTERS) ---
 
     public String getQualification() {
         return qualification;
@@ -49,7 +45,10 @@ public class Teacher extends Person{
         return new ArrayList<>(dependents);
     }
 
-    // Função que retorna todas informções importantes de Teacher ao mesmo tempo
+    public String getName() {
+        return this.name + " (Professor)";
+    }
+
     @Override
     public String toString() {
         return "Teacher {" +

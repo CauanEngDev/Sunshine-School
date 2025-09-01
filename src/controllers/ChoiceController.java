@@ -1,31 +1,28 @@
 package controllers;
 
-import views.ChoiceScreen;
-import javax.swing.*;
-import java.awt.*;
+import views.screens.MainFrame;
+import views.screens.ChoiceScreen;
 
 
 public class ChoiceController {
+    private final MainFrame screensPanel;
     private final ChoiceScreen choiceScreen;
 
-    public ChoiceController(ChoiceScreen choiceScreen) {
+    public ChoiceController(MainFrame screensPanel, ChoiceScreen choiceScreen) {
+        this.screensPanel = screensPanel;
         this.choiceScreen = choiceScreen;
 
-        this.choiceScreen.addClassButtonListener(e -> classOption());
-        this.choiceScreen.addGuardianButtonListener(e -> guardianOption());
-        this.choiceScreen.addTeacherButtonListener(e -> teacherOption());
-        this.choiceScreen.addStudentButtonListener(e -> studentOption());
-    }
-
-    private void classOption() {
-    }
-
-    private void guardianOption() {
-    }
-
-    private void teacherOption() {
-    }
-
-    private void studentOption() {
+        this.choiceScreen.addClassButtonListener(e -> {
+            screensPanel.navigateTo("Class_Option_Screen");
+        });
+        this.choiceScreen.addGuardianButtonListener(e -> {
+            screensPanel.navigateTo("Guardian_Option_Screen");
+        });
+        this.choiceScreen.addTeacherButtonListener(e -> {
+            screensPanel.navigateTo("Teacher_Option_Screen");
+        });
+        this.choiceScreen.addStudentButtonListener(e -> {
+            screensPanel.navigateTo("Student_Option_Screen");
+        });
     }
 }

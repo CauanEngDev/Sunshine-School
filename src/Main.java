@@ -1,13 +1,12 @@
-import views.WelcomeScreen;
-import controllers.MainController;
+import views.screens.MainFrame;
 
-import javax.swing.*;
+import javax.swing.SwingUtilities;
 
 public class Main {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            WelcomeScreen welcomeScreen = new WelcomeScreen();
-            new MainController(welcomeScreen);
+            MainFrame frame = new MainFrame();
+            frame.setVisible(true);
         });
     }
 }

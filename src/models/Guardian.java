@@ -23,8 +23,6 @@ public class Guardian extends Person{
         }
     }
 
-    // --- MÉTODOS DE MODIFICAÇÃO (SETTERS) ---
-
     public void addDependent(Student dependent) {
         if (dependent != null) {
             this.dependents.add(dependent);
@@ -35,8 +33,6 @@ public class Guardian extends Person{
         this.phone = newPhone;
     }
 
-    // --- MÉTODOS DE ACESSO (GETTERS) ---
-
     public String getPhone() {
         return phone;
     }
@@ -45,7 +41,9 @@ public class Guardian extends Person{
         return new ArrayList<>(dependents);
     }
 
-    // Função que retorna todas as informações importantes de Guardian
+    public String getName() {
+        return this.name;
+    }
     @Override
     public String toString() {
         return "Guardian {" +

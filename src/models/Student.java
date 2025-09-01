@@ -6,37 +6,42 @@ import java.util.List;
 
 public class Student extends Person {
     private final String birthPlace;
-    private final List<ReportCard> reportCards;
+    private Guardian guardian;
+//    private final List<ReportCard> reportCards;
 
     public Student(String name, LocalDate dateOfBirth,
                    Address address, int id,
-                   String birthPlace) {
+                   String birthPlace, Guardian guardian) {
 
         super(id, name, dateOfBirth, address);
 
         this.birthPlace = birthPlace;
-        this.reportCards = new ArrayList<>();
+        this.guardian = guardian;
+//        this.reportCards = new ArrayList<>();
     }
 
-    // --- MÉTODOS DE MODIFICAÇÃO (SETTERS) ---
+//    public void addReportCard(ReportCard card) {
+//        if (card != null) {
+//            this.reportCards.add(card);
+//        }
+//    }
 
-    public void addReportCard(ReportCard card) {
-        if (card != null) {
-            this.reportCards.add(card);
-        }
+    public String getGuardianName() {
+        return guardian.getName();
     }
 
-    // --- MÉTODOS DE ACESSO (GETTERS) ---
+    public void setGuardian(Guardian guardian) {
+        this.guardian = guardian;
+    }
 
     public String getBirthPlace() {
         return birthPlace;
     }
 
-    public List<ReportCard> getReportCards() {
-        return new ArrayList<>(reportCards);
-    }
+//    public List<ReportCard> getReportCards() {
+//        return new ArrayList<>(reportCards);
+//    }
 
-    //Função que retorna as informações importantes de Student
     @Override
     public String toString() {
         return "Student {" +
@@ -45,6 +50,5 @@ public class Student extends Person {
                 ", birthPlace = " + birthPlace +
                 ", dateOfBirth = " + dateOfBirth +
                 '}';
-
     }
 }
