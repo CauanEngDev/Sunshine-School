@@ -3,10 +3,7 @@ package controllers;
 import data.SchoolDatabase;
 import models.Address;
 import models.Guardian;
-import models.Person;
-import models.Teacher;
-import models.Student;
-import views.screens.CreateStudentScreen;
+import views.screens.CreateGuardianScreen;
 import views.screens.MainFrame;
 
 import javax.swing.*;
@@ -14,19 +11,19 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-public class StudentFormController {
-    private final CreateStudentScreen view;
+public class GuardianFormController {
+    private final CreateGuardianScreen view;
     private final MainFrame screensPanel;
 
-    public  StudentFormController(CreateStudentScreen view, MainFrame screensPanel) {
+    public  GuardianFormController(CreateGuardianScreen view, MainFrame screensPanel) {
         this.view = view;
         this.screensPanel = screensPanel;
 
-        this.view.addSaveButtonListener(e -> saveStudent());
+        this.view.addSaveButtonListener(e -> saveGuardian());
         this.view.addCancelButtonListener(e -> cancel());
     }
 
-    private void saveStudent() {
+    private void saveGuardian() {
         try {
             String name = view.getNameFieldValue();
             String dobText = view.getDateOfBirthFieldValue();
@@ -37,27 +34,25 @@ public class StudentFormController {
             String neighborhood = view.getNeighborhoodFieldValue();
             String cep = view.getCepFieldValue();
 
-            String birthPlace = view.getBirth();
-            Person responsible = view.getSelectedResponsible();
+            String phone = view.getPhone();
 
             if (name.isEmpty() || dobText.isEmpty() || street.isEmpty() || city.isEmpty() || state.isEmpty()
-                    || neighborhood.isEmpty() || cep.isEmpty() || birthPlace.isEmpty() || responsible == null) {
+                    || neighborhood.isEmpty() || cep.isEmpty() || phone.isEmpty()) {
                 JOptionPane.showMessageDialog(view, "Todos os campos são obrigatórios!");
                 return;
             }
-
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             LocalDate dateOfBirth = LocalDate.parse(dobText, formatter);
 
             Address address = new Address(street, city, state, neighborhood, cep);
-            Student student = new Student(name, dateOfBirth, address, 0, birthPlace, responsible);
+            Guardian guardian = new Guardian(name, dateOfBirth, address, 0, phone);
 
 
-            JOptionPane.showMessageDialog(view, "Aluno salvo com sucesso!");
-            SchoolDatabase.students.add(student);
+            JOptionPane.showMessageDialog(view, "Responsável salvo com sucesso!");
+            SchoolDatabase.guardians.add(guardian);
 
-            screensPanel.navigateTo("Student_Option_Screen");
+            screensPanel.navigateTo("Guardian_Option_Screen");
         } catch (DateTimeParseException ex) {
             JOptionPane.showMessageDialog(view, "Formato de data invalido! Use dd/mm/aaaa.");
         } catch (Exception ex) {
@@ -66,6 +61,6 @@ public class StudentFormController {
     }
 
     private void cancel() {
-        screensPanel.navigateTo("Student_Option_Screen");
+        screensPanel.navigateTo("Guardian_Option_Screen");
     }
 }

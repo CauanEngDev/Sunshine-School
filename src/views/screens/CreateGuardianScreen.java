@@ -1,27 +1,21 @@
 package views.screens;
 
-import models.Guardian;
-import models.Person;
 import models.panels.BaseFormPanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.util.List;
 
-public class CreateStudentScreen extends BaseFormPanel {
-    private JTextField birthPlace;
-    private JComboBox<Person> guardianComboBox;
+public class CreateGuardianScreen extends BaseFormPanel {
+    private JTextField phoneField;
 
-    public CreateStudentScreen(List<Person> responsibleList) {
+    public CreateGuardianScreen() {
         super();
 
-        ImageIcon studentIcon = new ImageIcon(getClass().getResource("/resources/Emoji_Aluno_Feliz.png"));
+        ImageIcon studentIcon = new ImageIcon(getClass().getResource("/resources/Emoji_Responsável_Feliz.png"));
         Image resizedImage = studentIcon.getImage().getScaledInstance(250, 250, Image.SCALE_SMOOTH);
 
         this.avatarLabel.setIcon(new ImageIcon(resizedImage));
-
-        guardianComboBox.setModel(new DefaultComboBoxModel<>(responsibleList.toArray(new Person[0])));
     }
 
     @Override
@@ -35,32 +29,19 @@ public class CreateStudentScreen extends BaseFormPanel {
 
         gbc.gridx = 0;
         gbc.gridy = 0;
-        panel.add(new JLabel("Naturalidade -> "), gbc);
+        panel.add(new JLabel("Telefone -> "), gbc);
 
         gbc.gridx = 1;
         gbc.weightx = 1.0;
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        this.birthPlace = new JTextField(20);
-        panel.add(this.birthPlace, gbc);
-
-        gbc.gridx = 2;
-        gbc.weightx = 0;
-        panel.add(new JLabel("Responsável -> "), gbc);
-
-        gbc.gridx = 3;
-        gbc.weightx = 1.0;
-        this.guardianComboBox = new JComboBox<>();
-        panel.add(guardianComboBox, gbc);
+        this.phoneField = new JTextField(20);
+        panel.add(this.phoneField, gbc);
 
         return panel;
     }
 
-    public String getBirth() {
-        return birthPlace.getText();
-    }
-
-    public Person getSelectedResponsible() {
-        return (Person) guardianComboBox.getSelectedItem();
+    public String getPhone() {
+        return phoneField.getText();
     }
 
     public void addSaveButtonListener(ActionListener actionListener) {

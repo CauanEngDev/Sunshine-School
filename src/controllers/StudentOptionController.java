@@ -1,8 +1,10 @@
 package controllers;
 
+import data.SchoolDatabase;
 import models.Person;
 import models.Teacher;
 import views.screens.CreateStudentScreen;
+import views.screens.ListStudentScreen;
 import views.screens.MainFrame;
 import views.screens.StudentOptionScreen;
 import models.Guardian;
@@ -23,13 +25,13 @@ public class StudentOptionController {
         });
         this.view.addCreateButtonListener(e -> openCreateStudentForm());
 //        this.view.addEditButtonListener(e-> goToEditStudent());
-//        this.view.addRemoveButtonListener(e -> goToRemoveStudent());
+        this.view.addRemoveButtonListener(e -> goToRemoveStudent());
 //        this.view.addSearchButtonListener(e -> goToSearchStudent());
     }
 
     private void openCreateStudentForm() {
-        List<Guardian> guardianList = new ArrayList<>();
-        List<Teacher>  teacherList = new ArrayList<>();
+        List<Guardian> guardianList = SchoolDatabase.guardians;
+        List<Teacher>  teacherList = SchoolDatabase.teachers;
 
         List<Person> resposibleList = new ArrayList<>();
         resposibleList.addAll(guardianList);
@@ -41,5 +43,12 @@ public class StudentOptionController {
 
         screensPanel.addScreen(createStudentScreen, "Create_Student_Screen");
         screensPanel.navigateTo("Create_Student_Screen");
+    }
+
+    private void goToRemoveStudent() {
+        ListStudentScreen listStudentScreen = new ListStudentScreen();
+
+        screensPanel.addScreen(listStudentScreen, "List_Student_Screen");
+        screensPanel.navigateTo("List_Student_Screen");
     }
 }

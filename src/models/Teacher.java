@@ -10,17 +10,14 @@ public class Teacher extends Person{
     private final List<Student> dependents;
 
     public  Teacher(String name, LocalDate dateOfBirth, Address address,
-                    int id, String qualification, String phone, List<Student> dependents) {
+                    int id, String qualification, String phone) {
 
         super(id, name, dateOfBirth, address);
 
         this.qualification = qualification;
         this.phone = phone;
-        if (dependents != null) {
-            this.dependents = new ArrayList<>(dependents);
-        } else {
-            this.dependents = new ArrayList<>();
-        }
+
+        this.dependents = new ArrayList<>();
     }
 
     public void addDependent(Student dependent) {

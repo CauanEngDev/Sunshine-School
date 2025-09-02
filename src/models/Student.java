@@ -6,17 +6,17 @@ import java.util.List;
 
 public class Student extends Person {
     private final String birthPlace;
-    private Guardian guardian;
+    private Person responsible;
 //    private final List<ReportCard> reportCards;
 
     public Student(String name, LocalDate dateOfBirth,
                    Address address, int id,
-                   String birthPlace, Guardian guardian) {
+                   String birthPlace, Person responsible) {
 
         super(id, name, dateOfBirth, address);
 
         this.birthPlace = birthPlace;
-        this.guardian = guardian;
+        this.responsible = responsible;
 //        this.reportCards = new ArrayList<>();
     }
 
@@ -26,12 +26,12 @@ public class Student extends Person {
 //        }
 //    }
 
-    public String getGuardianName() {
-        return guardian.getName();
+    public Person getGuardian() {
+        return responsible;
     }
 
-    public void setGuardian(Guardian guardian) {
-        this.guardian = guardian;
+    public void setGuardian(Person responsible) {
+        this.responsible = responsible;
     }
 
     public String getBirthPlace() {

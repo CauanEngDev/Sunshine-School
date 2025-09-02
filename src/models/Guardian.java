@@ -6,21 +6,16 @@ import java.util.ArrayList;
 
 public class Guardian extends Person{
     private String phone;
-    private  final List<Student>  dependents;
+    private  final List<Student> dependents;
 
     public Guardian(String name, LocalDate dateOfBirth,
-                    Address address, int id, String phone,
-                    List<Student> dependents) {
+                    Address address, int id, String phone) {
 
         super(id, name, dateOfBirth, address);
 
         this.phone = phone;
 
-        if (dependents != null) {
-            this.dependents = new ArrayList<>(dependents);
-        } else {
-            this.dependents = new ArrayList<>();
-        }
+        this.dependents = new ArrayList<>();
     }
 
     public void addDependent(Student dependent) {

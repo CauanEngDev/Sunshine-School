@@ -25,19 +25,23 @@ public abstract class BaseFormPanel extends ImagePanel {
         GridBagConstraints gbc_avatar = new GridBagConstraints();
         gbc_avatar.gridx = 0;
         gbc_avatar.gridy = 0;
-        gbc_avatar.gridheight = 4;
-        gbc_avatar.anchor = GridBagConstraints.NORTH;
-        gbc_avatar.insets = new Insets(20, 20, 20, 20);
+        gbc_avatar.anchor = GridBagConstraints.NORTHWEST;
+        gbc_avatar.insets = new Insets(10, 40, 20, 20);
         this.add(avatarLabel, gbc_avatar);
 
         JPanel formContainer = new JPanel();
         formContainer.setOpaque(false);
         formContainer.setLayout(new BoxLayout(formContainer, BoxLayout.Y_AXIS));
 
+        formContainer.add(Box.createRigidArea(new  Dimension(0, 30)));
         formContainer.add(createPersonalInfo());
+        formContainer.add(Box.createRigidArea(new  Dimension(0, 10)));
         formContainer.add(createUniqueFields());
+        formContainer.add(Box.createRigidArea(new  Dimension(0, 250)));
         formContainer.add(createAddressPanel());
+
         formContainer.add(Box.createVerticalGlue());
+
         formContainer.add(createButtonPanel());
 
         GridBagConstraints gbcMain = new GridBagConstraints();
@@ -46,57 +50,64 @@ public abstract class BaseFormPanel extends ImagePanel {
         gbcMain.weightx = 1.0;
         gbcMain.fill = GridBagConstraints.HORIZONTAL;
         gbcMain.anchor = GridBagConstraints.NORTH;
+        gbcMain.insets = new Insets(20, 0, 20, 40);
         this.add(formContainer, gbcMain);
     }
 
     protected abstract JPanel createUniqueFields();
 
     private JPanel createAddressPanel() {
-        JPanel addressPanel = new JPanel();
-        addressPanel.setLayout(new BoxLayout(addressPanel, BoxLayout.Y_AXIS));
-        addressPanel.setOpaque(false);
+        JPanel panel = new JPanel(new GridBagLayout());
+        panel.setOpaque(false);
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(4, 4, 4, 4);
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        JPanel topRowPanel = new JPanel(new GridBagLayout());
-        topRowPanel.setLayout(new GridLayout(1, 6, 10, 0));
-        topRowPanel.setOpaque(false);
+        // Linha 0: Rua
+        gbc.gridx = 0; gbc.gridy = 0; gbc.weightx = 0;
+        panel.add(new JLabel("Rua ->"), gbc);
+        gbc.gridx = 1; gbc.gridwidth = 5; gbc.weightx = 1.0;
+        streetField = new JTextField();
+        panel.add(streetField, gbc);
 
-        topRowPanel.add(new JLabel("Rua -> "));
-        this.streetField = new JTextField(30);
-        topRowPanel.add(streetField);
+        // Linha 1: Bairro e CEP
+        gbc.gridwidth = 1;
+        gbc.gridx = 0; gbc.gridy = 1; gbc.weightx = 0;
+        panel.add(new JLabel("Bairro ->"), gbc);
+        gbc.gridx = 1; gbc.gridwidth = 2; gbc.weightx = 1.0;
+        neighborhoodField = new JTextField();
+        panel.add(neighborhoodField, gbc);
 
-        topRowPanel.add(new JLabel("Bairro -> "));
-        this.neighborhoodField = new JTextField(30);
-        topRowPanel.add(neighborhoodField);
+        gbc.gridx = 3; gbc.gridwidth = 1; gbc.weightx = 0; gbc.insets = new Insets(4, 20, 4, 4);
+        panel.add(new JLabel("CEP ->"), gbc);
+        gbc.gridx = 4; gbc.gridwidth = 2; gbc.weightx = 1.0; gbc.insets = new Insets(4, 4, 4, 4);
+        cepField = new JTextField();
+        panel.add(cepField, gbc);
 
-        topRowPanel.add(new JLabel("CEP -> "));
-        this.cepField = new JTextField(8);
-        topRowPanel.add(cepField);
+        // Linha 2: Cidade e Estado
+        gbc.gridwidth = 1;
+        gbc.gridx = 0; gbc.gridy = 2; gbc.weightx = 0;
+        panel.add(new JLabel("City ->"), gbc);
+        gbc.gridx = 1; gbc.gridwidth = 2; gbc.weightx = 1.0;
+        cityField = new JTextField();
+        panel.add(cityField, gbc);
 
+        gbc.gridx = 3; gbc.gridwidth = 1; gbc.weightx = 0; gbc.insets = new Insets(4, 20, 4, 4);
+        panel.add(new JLabel("Estado ->"), gbc);
+        gbc.gridx = 4; gbc.gridwidth = 2; gbc.weightx = 1.0; gbc.insets = new Insets(4, 4, 4, 4);
+        stateField = new JTextField();
+        panel.add(stateField, gbc);
 
-        JPanel backRowPanel = new JPanel(new GridBagLayout());
-        backRowPanel.setLayout(new GridLayout(1, 4, 10, 0));
-        backRowPanel.setOpaque(false);
-
-        backRowPanel.add(new JLabel("City -> "));
-        this.cityField = new JTextField(30);
-        backRowPanel.add(cityField);
-
-        backRowPanel.add(new JLabel("Estado -> "));
-        this.stateField = new JTextField(30);
-        backRowPanel.add(stateField);
-
-        addressPanel.add(topRowPanel);
-        addressPanel.add(backRowPanel);
-
-        return addressPanel;
+        return panel;
     }
 
     private JPanel  createButtonPanel() {
-        JPanel buttonPanel = new JPanel(new GridLayout(1, 2, 15, 0));
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 0));
         buttonPanel.setOpaque(false);
 
-        this.cancelButton = new RoundedButton("  Cancelar  ", 18);
-        this.saveButton = new RoundedButton("  Finalizar  ", 18);
+        this.cancelButton = new RoundedButton("  Cancelar  ", 30);
+        this.saveButton = new RoundedButton("  Finalizar  ", 30);
 
         buttonPanel.add(cancelButton);
         buttonPanel.add(saveButton);
@@ -107,35 +118,33 @@ public abstract class BaseFormPanel extends ImagePanel {
     private JPanel createPersonalInfo(){
         JPanel personalInfo = new JPanel(new GridBagLayout());
         personalInfo.setOpaque(false);
-        personalInfo.setLayout(new GridLayout());
 
         GridBagConstraints gbc_personalInfo = new GridBagConstraints();
-        gbc_personalInfo.insets = new Insets(5, 5, 5, 5);
+        gbc_personalInfo.insets = new Insets(4, 4, 4, 4);
         gbc_personalInfo.anchor = GridBagConstraints.WEST;
+        gbc_personalInfo.fill = GridBagConstraints.HORIZONTAL;
 
-        JLabel nameLabel = new JLabel("Nome -> ");
         gbc_personalInfo.gridx = 0;
         gbc_personalInfo.gridy = 0;
         gbc_personalInfo.weightx = 0;
+        JLabel nameLabel = new JLabel("Nome -> ");
         personalInfo.add(nameLabel, gbc_personalInfo);
 
-        this.nameField = new JTextField(30);
         gbc_personalInfo.gridx = 1;
-        gbc_personalInfo.gridy = 0;
         gbc_personalInfo.weightx = 1.0;
-        gbc_personalInfo.fill = GridBagConstraints.HORIZONTAL;
+        nameField = new JTextField(30);
         personalInfo.add(nameField, gbc_personalInfo);
 
         JLabel dateOfBirthLabel = new JLabel("Nascimento -> ");
-        gbc_personalInfo.gridx = 0;
-        gbc_personalInfo.gridy = 1;
+        gbc_personalInfo.gridx = 2;
         gbc_personalInfo.weightx = 0;
+        gbc_personalInfo.insets = new Insets(4, 20, 4, 4);
         personalInfo.add(dateOfBirthLabel, gbc_personalInfo);
 
-        this.dateOfBirthField = new JTextField(30);
-        gbc_personalInfo.gridx = 1;
-        gbc_personalInfo.gridy = 1;
+        dateOfBirthField = new JTextField(10);
+        gbc_personalInfo.gridx = 3;
         gbc_personalInfo.weightx = 1.0;
+        gbc_personalInfo.insets = new Insets(4, 4, 4, 4);
         personalInfo.add(dateOfBirthField, gbc_personalInfo);
 
         return personalInfo;
