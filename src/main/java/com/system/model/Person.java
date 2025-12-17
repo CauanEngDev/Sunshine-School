@@ -3,7 +3,7 @@ package com.system.model;
 import java.time.LocalDate;
 import java.util.UUID;
 
-public abstract class Person {
+public abstract class Person implements Identifiable {
     protected final UUID id;
     protected String name;
     protected LocalDate dateOfBirth;
@@ -16,7 +16,13 @@ public abstract class Person {
         this.address = address;
     }
 
+    @Override
     public UUID getId() { return id; }
+
+    @Override
+    public boolean equals(Identifiable obj) {
+        if (this.id == obj.getId()) return true;
+    }
 
     public String getName() { return name; }
 
