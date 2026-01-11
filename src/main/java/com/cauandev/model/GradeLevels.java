@@ -1,5 +1,9 @@
-package com.system.model;
+package com.cauandev.model;
 
+/**
+ * Enum para guardar todos os níveis de escolaridade
+ * Vai do primeiro fundamental ao terceiro do ensino médio
+ */
 public enum GradeLevels {
     FIRST_FUNDAMENTAL,
     SECOND_FUNDAMENTAL,

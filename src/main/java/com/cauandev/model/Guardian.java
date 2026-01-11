@@ -1,9 +1,6 @@
-package com.system.model;
+package com.cauandev.model;
 
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import module java.base;
 
 public class Guardian extends Person implements IResponsible {
     private String phoneNumber;

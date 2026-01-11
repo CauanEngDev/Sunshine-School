@@ -1,5 +1,8 @@
-package com.system.model;
+package com.cauandev.model;
 
+/**
+ * Enum que classifica todas as matérias que os profesores podem estar qualificados
+ */
 public enum Qualifications {
     MATH,
     LANGUAGES,

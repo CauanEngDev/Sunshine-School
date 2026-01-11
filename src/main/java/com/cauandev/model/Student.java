@@ -1,4 +1,4 @@
-package com.system.model;
+package com.cauandev.model;
 
 import java.time.LocalDate;
 import java.util.UUID;
