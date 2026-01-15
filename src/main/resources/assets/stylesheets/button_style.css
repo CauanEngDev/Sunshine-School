@@ -1,0 +1,24 @@
+@font-face {
+    src: url(assets/fonts/MagicSchoolOne.ttf);
+    font-family: "Magic School One"
+}
+
+.button-base {
+    -fx-background-color: #87CEFA;
+    -fx-background-radius: 100;
+    -fx-font-family: "Magic School One";
+    -fx-text-alignment: "center";
+    -fx-text-fill: B85A00;
+}
+
+.button-big-size {
+    -fx-pref-width: 234;
+    -fx-pref-height: 61;
+    -fx-font-size: 28;
+}
+
+.button-small-size {
+    -fx-pref-width: 150;
+    -fx-pref-height: 45;
+    -fx-font-size: 32;
+}

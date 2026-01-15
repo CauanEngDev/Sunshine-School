@@ -1,0 +1,11 @@
+.base-view {
+    -fx-pref-width: 960;
+    -fx-pref-height: 540;
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
+
+.initial-view {
+    -fx-background-image: url("../images/initial_view.png");
+}
