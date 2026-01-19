@@ -1,6 +1,5 @@
 @font-face {
-    src: url(assets/fonts/MagicSchoolOne.ttf);
-    font-family: "Magic School One"
+    src: url("../fonts/MagicSchoolOne.ttf");
 }
 
 .button-base {
