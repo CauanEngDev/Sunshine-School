@@ -3,8 +3,12 @@ module SunshineSchool {
     requires javafx.fxml;
     requires javafx.graphics;
     requires java.logging;
+    requires ch.qos.logback.classic;
+    requires org.slf4j;
+    requires org.jetbrains.annotations;
 
     opens com.cauandev to  javafx.fxml, javafx.graphics;
+    opens com.cauandev.controller to javafx.fxml;
 
     opens assets.fonts to javafx.graphics;
     opens assets.stylesheets to javafx.graphics;
