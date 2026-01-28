@@ -9,3 +9,7 @@
 .initial-view {
     -fx-background-image: url("../images/initial_view.png");
 }
+
+.choose-view {
+    -fx-background-image: url("../images/choose_view.png");
+}

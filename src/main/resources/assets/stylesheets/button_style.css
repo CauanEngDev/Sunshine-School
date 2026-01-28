@@ -19,5 +19,5 @@
 .button-small-size {
     -fx-pref-width: 150;
     -fx-pref-height: 45;
-    -fx-font-size: 32;
+    -fx-font-size: 20;
 }
