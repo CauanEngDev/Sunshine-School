@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../assets/stylesheets/background_style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER_NAME">
+<fx:root prefHeight="400.0" prefWidth="600.0" type="AnchorPane" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
    <styleClass>
       <String fx:value="base-view" />
       <String fx:value="choose-view" />
@@ -13,33 +13,37 @@
    <children>
       <Button layoutX="405.0" layoutY="257.0" mnemonicParsing="false" text="Opções">
          <styleClass>
-            <String fx:value="button-small-size" />
             <String fx:value="button-base" />
+            <String fx:value="button-small-size" />
          </styleClass>
       </Button>
-      <Button layoutX="303.0" layoutY="354.0" mnemonicParsing="false" text="Aluno">
+      <Button fx:id="studentButton" layoutX="303.0" layoutY="354.0" mnemonicParsing="false" text="Aluno">
          <styleClass>
             <String fx:value="button-base" />
             <String fx:value="button-small-size" />
          </styleClass>
       </Button>
-      <Button layoutX="506.0" layoutY="354.0" mnemonicParsing="false" text="Responsável">
+      <Button fx:id="guardianButton" layoutX="506.0" layoutY="354.0" mnemonicParsing="false" text="Responsável">
          <styleClass>
             <String fx:value="button-base" />
             <String fx:value="button-small-size" />
          </styleClass>
       </Button>
-      <Button layoutX="303.0" layoutY="439.0" mnemonicParsing="false" text="Professor">
+      <Button fx:id="teacherButton" layoutX="303.0" layoutY="439.0" mnemonicParsing="false" text="Professor">
          <styleClass>
             <String fx:value="button-base" />
             <String fx:value="button-small-size" />
          </styleClass>
       </Button>
-      <Button layoutX="506.0" layoutY="439.0" mnemonicParsing="false" text="Turma">
+      <Button fx:id="classButton" layoutX="506.0" layoutY="439.0" mnemonicParsing="false" text="Turma">
          <styleClass>
             <String fx:value="button-base" />
             <String fx:value="button-small-size" />
          </styleClass>
       </Button>
    </children>
-</AnchorPane>
+   <stylesheets>
+      <URL value="@../assets/stylesheets/background_style.css" />
+      <URL value="@../assets/stylesheets/button_style.css" />
+   </stylesheets>
+</fx:root>

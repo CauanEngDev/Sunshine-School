@@ -1,22 +1,26 @@
 package com.cauandev.controller;
 
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
+import javafx.scene.layout.AnchorPane;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class GeneralController {
-    private Map<String, Parent> root = new HashMap<>();
-    private Stage stg;
+    public static Map<String, AnchorPane> root = new HashMap<>();
+    public static Scene scene;
 
-    public GeneralController(Stage stage) {
-        Parent INITIAL_ROOT = new InitialViewController();
-        this.stg = stage;
-        Scene scene = new Scene(INITIAL_ROOT);
-        stg.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+    public GeneralController() {
+        AnchorPane INITIAL_ROOT = new InitialViewController();
+        scene = new Scene(INITIAL_ROOT);
+    }
+
+    public Scene getScene() {
+        return scene;
+    }
+
+    public static void switchView(String viewName, AnchorPane view) {
+        root.putIfAbsent(viewName, view);
+        scene.setRoot(root.get(viewName));
     }
 }
