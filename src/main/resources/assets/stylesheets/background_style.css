@@ -13,3 +13,7 @@
 .choose-view {
     -fx-background-image: url("../images/choose_view.png");
 }
+
+.default-view-1 {
+    -fx-background-image: url("../images/default_view1.png");
+}
