@@ -1,5 +1,6 @@
 package com.cauandev.controller;
 
+import com.cauandev.enums.ViewNames;
 import com.cauandev.util.ViewFunctions;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,9 +14,10 @@ public abstract class DefaultView1Controller extends AnchorPane {
     @FXML protected Button deleteButton;
     @FXML protected Button updateButton;
     @FXML protected Button searchButton;
+    @FXML protected ImageView returnRune;
 
-    public DefaultView1Controller(String url) {
-        ViewFunctions.ViewLoader(url, this);
+    public DefaultView1Controller() {
+        ViewFunctions.ViewLoader("/view/DefaultOptionsView.fxml", this);
     }
 
     public void setTitle(String title) { this.title.setText(title); }
@@ -32,6 +34,15 @@ public abstract class DefaultView1Controller extends AnchorPane {
 
     @FXML
     public void initialize() {
-
+        createButton.setOnAction(event -> createAction());
+        deleteButton.setOnAction(event -> deleteAction());
+        updateButton.setOnAction(event -> updateAction());
+        searchButton.setOnAction(event -> searchAction());
+        returnRune.setOnMouseClicked(event -> GeneralController.switchView(ViewNames.OPTION));
     }
+
+    protected abstract void createAction();
+    protected abstract void deleteAction();
+    protected abstract void updateAction();
+    protected abstract void searchAction();
 }

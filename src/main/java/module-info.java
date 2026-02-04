@@ -6,7 +6,6 @@ module SunshineSchool {
     requires ch.qos.logback.classic;
     requires org.slf4j;
     requires org.jetbrains.annotations;
-    requires SunshineSchool;
 
     opens com.cauandev to  javafx.fxml, javafx.graphics;
     opens com.cauandev.controller to javafx.fxml;

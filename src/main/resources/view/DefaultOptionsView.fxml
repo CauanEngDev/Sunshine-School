@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -58,6 +59,11 @@
             <String fx:value="button-small-size" />
          </styleClass>
       </Button>
+      <ImageView fx:id="returnRune" fitHeight="90.0" fitWidth="93.0" layoutX="22.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/images/return_image.png" />
+         </image>
+      </ImageView>
    </children>
    <stylesheets>
       <URL value="@../assets/stylesheets/background_style.css" />

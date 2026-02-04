@@ -1,5 +1,6 @@
 package com.cauandev.controller;
 
+import com.cauandev.enums.ViewNames;
 import com.cauandev.util.ViewFunctions;
 
 import module javafx.controls;
@@ -33,7 +34,7 @@ public class InitialViewController extends AnchorPane {
         parent.getChildren().set(index, loadingGif);
 
         PauseTransition pause = new PauseTransition(Duration.seconds(7));
-        pause.setOnFinished(event -> GeneralController.switchView("Tela de opções", new OptionViewController()));
+        pause.setOnFinished(event -> GeneralController.switchView(ViewNames.OPTION));
 
         pause.play();
     }
