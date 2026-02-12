@@ -1,2 +1,2 @@
-# Sistema-Escolinha-Raio-de-Sol
+# Sunshine-School
 Projeto PBL do Terceiro Semestre de Engenharia da Computação. Sistema escolar capaz de criar e guardar informações de alunos, professores e responsáveis. 
