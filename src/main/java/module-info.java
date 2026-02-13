@@ -16,4 +16,6 @@ module SunshineSchool {
     opens view to javafx.fxml;
 
     exports com.cauandev;
+    exports com.cauandev.database;
+    opens com.cauandev.database to javafx.fxml, javafx.graphics;
 }

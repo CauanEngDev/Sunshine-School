@@ -11,8 +11,9 @@ public class Teacher extends Person implements IResponsible {
     private final Set<Student> dependents = new HashSet<>();
 
     public Teacher(UUID id, String name, LocalDate dateOfBirth,
-                   Address address,  String phoneNumber) {
+                   Qualifications qualification, Address address,  String phoneNumber) {
         super(id, name, dateOfBirth, address);
+        this.qualification = qualification;
         this.phoneNumber = phoneNumber;
     }
 

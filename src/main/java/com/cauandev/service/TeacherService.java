@@ -1,26 +1,24 @@
 package com.cauandev.service;
 
-import com.cauandev.model.Address;
+import com.cauandev.database.SunshineSchoolData;
 import com.cauandev.model.Qualifications;
 import com.cauandev.model.Teacher;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.cauandev.util.Validations;
 
 import java.time.LocalDate;
-import java.util.Set;
 
-public class TeacherService {
-    private static final Logger logger = LoggerFactory.getLogger(TeacherService.class);
+public class TeacherService extends PersonService{
 
-    public void register(String name, LocalDate dateOfBirth, Address address, Qualifications qualification,
-                                String phoneNumber) {
-        if (name == null || dateOfBirth == null || address == null || qualification == null || phoneNumber == null) {
-            logger.error("Erro ao criar o registro de teacher");
-            return;
-        }
 
-        Teacher newTeacher = new Teacher(name)
+    public void register(String name, LocalDate dateOfBirth, Qualifications qualification,String phoneNumber,
+                         String street, String city, String state, String cep, String neighborhood) {
+
+        super.basicInfoValidation(SunshineSchoolData.TEACHERS, name, dateOfBirth, street,
+                                  city, state, cep, neighborhood);
+        Validations.textValidation(qualification.toString(), "qualificação");
+        Validations.phoneValidation(phoneNumber);
+
+        Teacher newTeacher = new Teacher(newId, name, dateOfBirth, qualification, address, phoneNumber);
+        SunshineSchoolData.TEACHERS.put(newId, newTeacher);
     }
-
-
 }
