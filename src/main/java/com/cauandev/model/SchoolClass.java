@@ -1,5 +1,7 @@
 package com.cauandev.model;
 
+import com.cauandev.enums.GradeLevels;
+
 import java.util.HashSet;
 import java.util.Set;
 

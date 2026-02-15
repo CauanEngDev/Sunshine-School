@@ -6,7 +6,6 @@ module SunshineSchool {
     requires ch.qos.logback.classic;
     requires org.slf4j;
     requires org.jetbrains.annotations;
-    requires SunshineSchool;
 
     opens com.cauandev to  javafx.fxml, javafx.graphics;
     opens com.cauandev.controller to javafx.fxml;
@@ -17,5 +16,8 @@ module SunshineSchool {
 
     exports com.cauandev;
     exports com.cauandev.database;
+    exports com.cauandev.service;
+    exports com.cauandev.enums;
+    exports com.cauandev.model;
     opens com.cauandev.database to javafx.fxml, javafx.graphics;
 }

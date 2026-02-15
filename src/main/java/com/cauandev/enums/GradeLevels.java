@@ -1,4 +1,4 @@
-package com.cauandev.model;
+package com.cauandev.enums;
 
 /**
  * Enum para guardar todos os níveis de escolaridade

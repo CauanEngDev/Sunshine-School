@@ -1,4 +1,4 @@
-package com.cauandev.model;
+package com.cauandev.enums;
 
 /**
  * Enum que classifica todas as matérias que os profesores podem estar qualificados
