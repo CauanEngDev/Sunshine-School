@@ -4,6 +4,7 @@ import com.cauandev.enums.Qualifications;
 
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
@@ -23,9 +24,23 @@ public class Teacher extends Person implements IResponsible {
 
     public Set<Student> getDependents() { return new HashSet<>(dependents); }
 
-    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
+    public Qualifications getQualification() { return qualification; }
 
-    public void setQualification(Qualifications qualification) { this.qualification = qualification; }
+    public void setPhoneNumber(String newPhoneNumber) {
+        if (Objects.equals(newPhoneNumber, this.phoneNumber)) return;
+
+        this.phoneNumber = newPhoneNumber;
+        this.change = true;
+        logger.info("Telefone alterado para {}", newPhoneNumber);
+    }
+
+    public void setQualification(Qualifications newQualification) {
+        if (Objects.equals(newQualification, this.qualification)) return;
+
+        this.qualification = newQualification;
+        this.change = true;
+        logger.info("Qualificação alterada para {}", newQualification);
+    }
 
     public void addDependent(Student student) { dependents.add(student); }
 

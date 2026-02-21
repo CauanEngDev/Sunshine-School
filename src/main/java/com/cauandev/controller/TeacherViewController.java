@@ -21,8 +21,8 @@ public class TeacherViewController extends DefaultView1Controller {
     public void deleteAction() { println("Wingadium Leviosa!"); }
 
     @Override
-    public void updateAction() { println("Espectro Patronum");}
+    public void updateAction() { println("Espectro Patronum"); }
 
     @Override
-    public void searchAction() { println("Accio!");}
+    public void searchAction() { println("Accio!"); }
 }

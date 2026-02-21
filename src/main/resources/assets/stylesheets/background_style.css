@@ -17,3 +17,7 @@
 .default-view-1 {
     -fx-background-image: url("../images/default_view1.png");
 }
+
+.default-person-view {
+    -fx-background-image: url("../images/default_person_view.png");
+}

@@ -9,8 +9,9 @@ public enum Qualifications {
     SCIENCE,
     BIOLOGY,
     QUIMIC,
-    PHISIC,
+    PHYSIC,
     HISTORY,
     GEOGRAPHY,
+    PHYSICAL_EDUCATION,
     OTHER
 }

@@ -2,6 +2,7 @@ package com.cauandev.service;
 
 import com.cauandev.model.Address;
 import com.cauandev.model.Identifiable;
+import com.cauandev.model.Teacher;
 import com.cauandev.util.Validations;
 
 import java.time.LocalDate;
@@ -20,5 +21,11 @@ public abstract class PersonService {
         do {
             newId = UUID.randomUUID();
         } while (map.containsKey(newId));
+    }
+
+    protected void basicInfoUpdate(Teacher teacher, String name, LocalDate dateOfBirth, String street,
+                                   String city, String state, String cep, String neighborhood) {
+
+
     }
 }

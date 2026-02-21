@@ -1,0 +1,17 @@
+@font-face {
+    src: url("../fonts/MagicSchoolOne.ttf");
+}
+
+.common-label {
+    -fx-text-fill: B85A00;
+    -fx-font-family: "Magic School One";
+    -fx-font-size: 20;
+}
+
+.common-text-field{
+    -fx-font-family: "Magic School Two";
+    -fx-alignment: "center_left";
+    -fx-pref-width: 206;
+    -fx-pref-height: 31;
+    -fx-font-size: 13;
+}

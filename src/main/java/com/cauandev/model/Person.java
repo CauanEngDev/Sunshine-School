@@ -1,6 +1,11 @@
 package com.cauandev.model;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -8,12 +13,14 @@ import java.util.UUID;
  * classes filhas. Também implementa 'interface' 'Indentifiable'.
  */
 public abstract class Person implements Identifiable {
+    protected static final Logger logger = LoggerFactory.getLogger(Person.class);
     protected final UUID id;
     protected String name;
     protected LocalDate dateOfBirth;
     protected Address address;
+    protected boolean change = false;
 
-    public Person(UUID id, String name, LocalDate dateOfBirth, Address address) {
+    protected Person(UUID id, String name, LocalDate dateOfBirth, Address address) {
         this.id = id;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -23,7 +30,7 @@ public abstract class Person implements Identifiable {
     @Override
     public UUID getId() { return id; }
 
-    // Sobrescrita do 'equals' para que seja feito de acordo com 'id'
+    // Sobrescrita do 'equals' para comparação de acordo com 'id'
     @Override
     public boolean equals(Identifiable obj) {
         return this.getId().equals(obj.getId());
@@ -35,9 +42,31 @@ public abstract class Person implements Identifiable {
 
     public LocalDate getDateOfBirth() { return dateOfBirth; }
 
-    public void setName(String name) { this.name = name; }
+    public void setName(String newName) {
+        if (Objects.equals(newName, this.name)) return;
 
-    public void setAddress(Address address) { this.address = address; }
+        this.name = newName;
+        this.change = true;
+        logger.info("Nome alterado para {}", newName);
+    }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) { this.dateOfBirth = dateOfBirth; }
+    public void setAddress(Address newAddress) {
+        if (Objects.equals(newAddress, this.address)) return;
+
+        this.address = newAddress;
+        this.change = true;
+        logger.info("Endereço alterado");
+    }
+
+    public void setDateOfBirth(LocalDate newDateOfBirth) {
+        if (Objects.equals(newDateOfBirth, this.dateOfBirth)) return;
+
+        this.dateOfBirth = newDateOfBirth;
+        this.change = true;
+        logger.info("Data de aniversário alterada para {}", newDateOfBirth.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+    }
+
+    public boolean getChange() { return this.change; }
+
+    public void setChange(boolean newChange) { this.change = newChange; }
 }

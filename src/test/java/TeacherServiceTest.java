@@ -1,6 +1,7 @@
 import com.cauandev.database.SunshineSchoolData;
 import com.cauandev.model.Address;
 import com.cauandev.enums.Qualifications;
+import com.cauandev.model.Teacher;
 import com.cauandev.service.AddressService;
 import com.cauandev.service.TeacherService;
 import org.junit.jupiter.api.Assertions;
@@ -46,5 +47,27 @@ public class TeacherServiceTest {
         Assertions.assertNotEquals("Cavillrini", teacher.getAddress().state());
         Assertions.assertNotEquals(oldAddress, teacher.getAddress());
         Assertions.assertEquals(newAddress, teacher.getAddress());
+    }
+
+    @Test
+    public void updateTeacherTest() {
+        Address address = new Address("Caverna", "Green Hills", "Montana", "69", "Floresta");
+        Teacher sonic = new Teacher(UUID.randomUUID(), "Sonic the Hedgehog", LocalDate.of(1991, 6, 23),
+                Qualifications.PHYSICAL_EDUCATION, address, "71940028922");
+
+        Assertions.assertEquals("Sonic the Hedgehog", sonic.getName());
+        Assertions.assertEquals(LocalDate.of(1991, 6, 23), sonic.getDateOfBirth());
+        Assertions.assertEquals(Qualifications.PHYSICAL_EDUCATION, sonic.getQualification());
+        Assertions.assertEquals(address, sonic.getAddress());
+        Assertions.assertEquals("71940028922", sonic.getPhoneNumber());
+
+        teacherService.update(sonic, "Sonic the Hedgehog", LocalDate.of(1991, 6, 23), Qualifications.PHYSICAL_EDUCATION,
+                "7140028922", "Solitude", "Haafingar", "Skyrim", "5", "Desfiladeiro");
+
+        Assertions.assertEquals("Sonic the Hedgehog", sonic.getName());
+        Assertions.assertEquals(LocalDate.of(1991, 6, 23), sonic.getDateOfBirth());
+        Assertions.assertNotEquals(Qualifications.OTHER, sonic.getQualification());
+        Assertions.assertNotEquals(address, sonic.getAddress());
+        Assertions.assertNotEquals("71940028922", sonic.getPhoneNumber());
     }
 }
