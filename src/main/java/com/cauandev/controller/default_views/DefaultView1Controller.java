@@ -1,5 +1,6 @@
-package com.cauandev.controller;
+package com.cauandev.controller.default_views;
 
+import com.cauandev.controller.GeneralController;
 import com.cauandev.enums.ViewNames;
 import com.cauandev.util.ViewFunctions;
 import javafx.fxml.FXML;

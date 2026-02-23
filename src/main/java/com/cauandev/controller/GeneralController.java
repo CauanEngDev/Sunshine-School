@@ -1,5 +1,8 @@
 package com.cauandev.controller;
 
+import com.cauandev.controller.student_views.StudentViewController;
+import com.cauandev.controller.teacher_views.TeacherCreateView;
+import com.cauandev.controller.teacher_views.TeacherViewController;
 import com.cauandev.enums.ViewNames;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -36,6 +39,7 @@ public class GeneralController {
             case OPTION -> new OptionViewController();
             case STUDENT_OPTION -> new StudentViewController();
             case TEACHER_OPTION -> new TeacherViewController();
+            case TEACHERCREATION -> new TeacherCreateView();
             default -> throw new IllegalArgumentException("Erro ao tentar criar tela " + viewName);
         };
     }

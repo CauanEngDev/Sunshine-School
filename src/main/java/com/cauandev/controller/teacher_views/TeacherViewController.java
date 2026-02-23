@@ -1,4 +1,8 @@
-package com.cauandev.controller;
+package com.cauandev.controller.teacher_views;
+
+import com.cauandev.controller.GeneralController;
+import com.cauandev.controller.default_views.DefaultView1Controller;
+import com.cauandev.enums.ViewNames;
 
 import static java.lang.IO.println;
 
@@ -7,7 +11,7 @@ public class TeacherViewController extends DefaultView1Controller {
     public TeacherViewController() {
         super();
         setTitle("Professor");
-        setAvatar("/assets/images/student_image.png");
+        setAvatar("/assets/images/teacher_image.png");
         setCreateButton("Inscrever Professor");
         setDeleteButton("Deletar Professor");
         setSearchButton("Professores");
@@ -15,7 +19,7 @@ public class TeacherViewController extends DefaultView1Controller {
     }
 
     @Override
-    public void createAction() { println("Sectusempra!"); }
+    public void createAction() { GeneralController.switchView(ViewNames.TEACHERCREATION); }
 
     @Override
     public void deleteAction() { println("Wingadium Leviosa!"); }

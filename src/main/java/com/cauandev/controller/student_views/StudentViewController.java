@@ -1,8 +1,10 @@
-package com.cauandev.controller;
+package com.cauandev.controller.student_views;
+
+import com.cauandev.controller.default_views.DefaultView1Controller;
 
 import static java.lang.IO.println;
 
-public class StudentViewController extends DefaultView1Controller{
+public class StudentViewController extends DefaultView1Controller {
 
     public StudentViewController() {
         super();

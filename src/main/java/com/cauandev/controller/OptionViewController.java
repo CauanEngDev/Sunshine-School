@@ -22,8 +22,8 @@ public class OptionViewController extends AnchorPane {
     @FXML
     public void initialize() {
         this.studentButton.setOnAction(event -> GeneralController.switchView(STUDENT_OPTION));
-        this.guardianButton.setOnAction(event -> GeneralController.switchView(TEACHER_OPTION));
-        this.teacherButton.setOnAction(event -> println("Imperio!"));
+        this.guardianButton.setOnAction(event -> println("Imperio!"));
+        this.teacherButton.setOnAction(event -> GeneralController.switchView(TEACHER_OPTION));
         this.classButton.setOnAction(event -> println("Estupefaça!"));
     }
 }
